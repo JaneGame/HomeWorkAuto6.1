@@ -14,12 +14,12 @@ public class DataHelper {
 
     @Value
     public static class numberFirst{
-        private int amount;
-        private String numberFirst;
+        private String amount;
+        private String numberCard;
     }
 
     public static numberFirst getNumberFirst () {
-        return new numberFirst(100, "5559 0000 0000 0001");
+        return new numberFirst("100", "5559 0000 0000 0001");
     }
 
     public static AuthInfo getAuthInfo() {
