@@ -9,34 +9,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import ru.netology.web.data.DataHelper;
+import ru.netology.web.page.DashboardPage;
 import ru.netology.web.page.LoginPageV1;
 
 import static com.codeborne.selenide.Selenide.open;
 
 public class MoneyTransferTest {
 
-    private WebDriver driver;
-
-    @BeforeAll
-    static void setupAll() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeEach
-    void setUp() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
-        driver.get("http://localhost:9999");
-    }
-
-    @AfterEach
-    void tearDown() {
-        driver.quit();
-        driver = null;
-    }
 
     @Test
     void shouldTransferMoneyBetweenOwnCardsV1() {
@@ -47,5 +26,8 @@ public class MoneyTransferTest {
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         verificationPage.validVerify(verificationCode);
+        var dashboard = new DashboardPage();
+        var numberFirst = DataHelper.getNumberFirst();
+
     }
 }
