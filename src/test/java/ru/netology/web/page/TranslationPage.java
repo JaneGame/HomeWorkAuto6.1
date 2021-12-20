@@ -29,7 +29,7 @@ public class TranslationPage {
     }
 
 
-    public static void error() {
+    public void getError() {
         error.shouldBe(visible);
     }
 }
